@@ -4,13 +4,13 @@ import { getAuth } from 'firebase/auth';
 
 // Firebase configuration for ZEITNOIR
 const firebaseConfig = {
-  // Note: These would be environment variables in production
-  apiKey: "zeitnoir-demo-key",
-  authDomain: "zeitnoir-swiss.firebaseapp.com",
-  projectId: "zeitnoir-swiss",
-  storageBucket: "zeitnoir-swiss.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "zeitnoir-app-id"
+  apiKey: "AIzaSyBQgLH0U5tyoZ9UGbaxRih4egyJupXGPPs",
+  authDomain: "lx-plug.firebaseapp.com",
+  projectId: "lx-plug",
+  storageBucket: "lx-plug.firebasestorage.app",
+  messagingSenderId: "429122176001",
+  appId: "1:429122176001:web:d870be87f6ab9c3794ac00",
+  measurementId: "G-F69V74CHGH"
 };
 
 // Initialize Firebase
