@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Bitcoin, Wallet, Lock } from 'lucide-react';
+import certificate from '@/assets/zeitnoir-certificate.png';
 
 interface CheckoutProps {
   timepiece: {
@@ -73,6 +74,28 @@ export const Checkout = ({ timepiece, isOpen, onClose }: CheckoutProps) => {
                     {formatPrice(timepiece.price)}
                   </p>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Certificate Preview */}
+          <Card className="card-luxury">
+            <CardHeader>
+              <CardTitle className="text-lg">Included in Your Package</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center mb-4">
+                <img 
+                  src={certificate} 
+                  alt="Certificate of Legacy and Authenticity"
+                  className="mx-auto max-w-full h-auto object-contain rounded-lg shadow-elegant"
+                />
+              </div>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <p>✓ Certificate of Legacy and Authenticity</p>
+                <p>✓ Handcrafted Swiss vault presentation box</p>
+                <p>✓ Numbered metal membership card</p>
+                <p>✓ Lifetime concierge services</p>
               </div>
             </CardContent>
           </Card>

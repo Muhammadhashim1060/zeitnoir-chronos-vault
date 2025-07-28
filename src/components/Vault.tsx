@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Crown, Diamond, Shield, Plane } from 'lucide-react';
 import vaultBox from '@/assets/vault-box.jpg';
+import membershipCards from '@/assets/zeitnoir-membership-cards.png';
 
 export const Vault = () => {
   const membershipTiers = [
@@ -105,6 +106,15 @@ export const Vault = () => {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Membership Cards Preview */}
+        <div className="text-center mb-12">
+          <img 
+            src={membershipCards} 
+            alt="ZEITNOIR Membership Cards - Gold, Diamond, Black Badge"
+            className="mx-auto max-w-2xl w-full h-auto object-contain rounded-lg shadow-elegant"
+          />
         </div>
 
         {/* Membership Tiers */}

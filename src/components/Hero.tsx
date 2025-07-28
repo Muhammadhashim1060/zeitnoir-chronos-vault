@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import brandLogo from '@/assets/zeitnoir-brand-logo.png';
 
 export const Hero = () => {
   return (
@@ -24,6 +25,15 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+        {/* Brand Logo */}
+        <div className="mb-8">
+          <img 
+            src={brandLogo} 
+            alt="ZEITNOIR Ultra-Luxury Brand"
+            className="mx-auto h-32 w-auto object-contain"
+          />
+        </div>
+        
         {/* Main Headline */}
         <h1 className="text-6xl md:text-8xl font-playfair font-bold mb-6 bg-gradient-luxury bg-clip-text text-transparent leading-tight">
           Own The Hour.™
