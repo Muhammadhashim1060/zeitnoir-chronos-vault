@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ZEITNOIR Luxury Design System - Ultra-Premium Timepieces */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Luxury Black Foundation */
+    --background: 0 0% 2%;
+    --foreground: 45 15% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Premium Card Surfaces */
+    --card: 0 0% 5%;
+    --card-foreground: 45 15% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Elevated Surfaces */
+    --popover: 0 0% 3%;
+    --popover-foreground: 45 15% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Luxury Gold Primary */
+    --primary: 45 90% 65%;
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 45 100% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Sophisticated Secondary */
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 45 15% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Elegance */
+    --muted: 0 0% 6%;
+    --muted-foreground: 45 8% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Luxury Accent */
+    --accent: 0 0% 10%;
+    --accent-foreground: 45 25% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 15% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Refined Borders */
+    --border: 0 0% 12%;
+    --input: 0 0% 8%;
+    --ring: 45 90% 65%;
 
-    --radius: 0.5rem;
+    /* Luxury Gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(45 90% 65%) 0%, hsl(45 100% 75%) 50%, hsl(45 85% 60%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(0 0% 3%) 50%, hsl(0 0% 1%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 3%) 0%, hsl(0 0% 6%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 2%) 0%, hsl(0 0% 0%) 100%);
+
+    /* Premium Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(45 90% 65% / 0.25);
+    --shadow-elegant: 0 20px 40px -10px hsl(0 0% 0% / 0.8);
+    --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.6);
+    --shadow-glow: 0 0 50px hsl(45 100% 75% / 0.3);
+
+    /* Luxury Animations */
+    --transition-luxury: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elegant: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +126,112 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-hero);
+    min-height: 100vh;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+
+  .font-playfair { 
+    font-family: 'Playfair Display', serif; 
+  }
+  
+  .font-inter { 
+    font-family: 'Inter', sans-serif; 
+  }
+  
+  .font-cormorant { 
+    font-family: 'Cormorant Garamond', serif; 
+  }
+}
+
+@layer components {
+  /* Luxury Button Variants */
+  .btn-luxury {
+    @apply relative overflow-hidden;
+    background: var(--gradient-luxury);
+    box-shadow: var(--shadow-luxury);
+    transition: var(--transition-luxury);
+  }
+
+  .btn-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-ghost-luxury {
+    @apply border-2 border-primary/30 bg-transparent text-primary;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-ghost-luxury:hover {
+    @apply border-primary bg-primary/10;
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Luxury Card Effects */
+  .card-luxury {
+    background: var(--gradient-card);
+    border: 1px solid hsl(0 0% 12%);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-elegant);
+  }
+
+  .card-luxury:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Premium Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Luxury Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(0 0% 3%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-luxury);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(45 100% 75%);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 20px hsl(45 90% 65% / 0.2); }
+  100% { box-shadow: 0 0 40px hsl(45 90% 65% / 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
