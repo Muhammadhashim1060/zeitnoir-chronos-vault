@@ -1,10 +1,70 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/components/ui/use-toast';
 
 export const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    inquiryType: '',
+    budgetRange: '',
+    message: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase
+        .from('customer_inquiries')
+        .insert([
+          {
+            customer_name: `${formData.firstName} ${formData.lastName}`,
+            customer_email: formData.email,
+            customer_phone: formData.phone,
+            inquiry_type: formData.inquiryType,
+            message: `Budget Range: ${formData.budgetRange}\n\n${formData.message}`
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Consultation Request Sent",
+        description: "Our concierge team will contact you within 2 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        inquiryType: '',
+        budgetRange: '',
+        message: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -32,15 +92,21 @@ export const Contact = () => {
               </p>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input 
                   placeholder="First Name" 
                   className="bg-card border-border"
+                  value={formData.firstName}
+                  onChange={(e) => setFormData(prev => ({...prev, firstName: e.target.value}))}
+                  required
                 />
                 <Input 
                   placeholder="Last Name" 
                   className="bg-card border-border"
+                  value={formData.lastName}
+                  onChange={(e) => setFormData(prev => ({...prev, lastName: e.target.value}))}
+                  required
                 />
               </div>
               
@@ -48,15 +114,20 @@ export const Contact = () => {
                 type="email" 
                 placeholder="Email Address" 
                 className="bg-card border-border"
+                value={formData.email}
+                onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
+                required
               />
               
               <Input 
                 type="tel" 
                 placeholder="Phone Number" 
                 className="bg-card border-border"
+                value={formData.phone}
+                onChange={(e) => setFormData(prev => ({...prev, phone: e.target.value}))}
               />
 
-              <Select>
+              <Select value={formData.inquiryType} onValueChange={(value) => setFormData(prev => ({...prev, inquiryType: value}))}>
                 <SelectTrigger className="bg-card border-border">
                   <SelectValue placeholder="Inquiry Type" />
                 </SelectTrigger>
@@ -69,7 +140,7 @@ export const Contact = () => {
                 </SelectContent>
               </Select>
 
-              <Select>
+              <Select value={formData.budgetRange} onValueChange={(value) => setFormData(prev => ({...prev, budgetRange: value}))}>
                 <SelectTrigger className="bg-card border-border">
                   <SelectValue placeholder="Budget Range" />
                 </SelectTrigger>
@@ -85,10 +156,16 @@ export const Contact = () => {
               <Textarea 
                 placeholder="Tell us about your vision..." 
                 className="bg-card border-border min-h-32"
+                value={formData.message}
+                onChange={(e) => setFormData(prev => ({...prev, message: e.target.value}))}
               />
 
-              <Button className="btn-luxury w-full py-3">
-                Request Consultation
+              <Button 
+                type="submit" 
+                className="btn-luxury w-full py-3"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Sending...' : 'Request Consultation'}
               </Button>
             </form>
           </div>

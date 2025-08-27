@@ -167,7 +167,7 @@ export const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
               </Card>
             </div>
 
-            {/* Firebase Integration Status */}
+            {/* Firebase Integration Status - FIXED: Now showing Supabase */}
             <Card className="card-luxury">
               <CardHeader>
                 <CardTitle>System Status</CardTitle>
@@ -176,11 +176,11 @@ export const AdminPanel = ({ isOpen, onClose }: AdminPanelProps) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">Firebase Connected</span>
+                    <span className="text-sm">Supabase Connected</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm">Firestore Synced</span>
+                    <span className="text-sm">Database Synced</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>

@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+
 export const About = () => {
   return (
     <section id="about" className="py-20 px-4 bg-gradient-dark">
@@ -105,9 +107,9 @@ export const About = () => {
             ZEITNOIR ownership extends beyond mere possession—it's membership in an 
             exclusive circle where time, heritage, and status converge.
           </p>
-          <button className="btn-luxury px-8 py-3 rounded-lg font-semibold">
+          <Button className="btn-luxury px-8 py-3">
             Discover Your Legacy
-          </button>
+          </Button>
         </div>
       </div>
     </section>

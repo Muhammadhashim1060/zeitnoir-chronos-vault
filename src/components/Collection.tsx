@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { WatchCard } from './WatchCard';
 import watch1 from '@/assets/watch-1.jpg';
 import watch2 from '@/assets/watch-2.jpg';
@@ -74,12 +75,12 @@ export const Collection = () => {
             Discover our complete collection of ultra-rare timepieces
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-luxury px-8 py-3 rounded-lg font-semibold">
+            <Button className="btn-luxury px-8 py-3">
               View All Timepieces
-            </button>
-            <button className="btn-ghost-luxury px-8 py-3 rounded-lg">
+            </Button>
+            <Button className="btn-ghost-luxury px-8 py-3">
               Schedule Private Viewing
-            </button>
+            </Button>
           </div>
         </div>
       </div>
