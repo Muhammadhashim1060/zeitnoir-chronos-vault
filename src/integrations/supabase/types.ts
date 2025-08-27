@@ -14,7 +14,148 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      customer_inquiries: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string | null
+          id: string
+          inquiry_type: string | null
+          message: string | null
+          status: string | null
+          watch_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone?: string | null
+          id?: string
+          inquiry_type?: string | null
+          message?: string | null
+          status?: string | null
+          watch_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string | null
+          id?: string
+          inquiry_type?: string | null
+          message?: string | null
+          status?: string | null
+          watch_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customer_inquiries_watch_id_fkey"
+            columns: ["watch_id"]
+            isOneToOne: false
+            referencedRelation: "watches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string | null
+          id: string
+          order_status: string | null
+          payment_status: string | null
+          shipping_address: Json | null
+          total_amount: number
+          updated_at: string
+          watch_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone?: string | null
+          id?: string
+          order_status?: string | null
+          payment_status?: string | null
+          shipping_address?: Json | null
+          total_amount: number
+          updated_at?: string
+          watch_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string | null
+          id?: string
+          order_status?: string | null
+          payment_status?: string | null
+          shipping_address?: Json | null
+          total_amount?: number
+          updated_at?: string
+          watch_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_watch_id_fkey"
+            columns: ["watch_id"]
+            isOneToOne: false
+            referencedRelation: "watches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      watches: {
+        Row: {
+          brand: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_available: boolean | null
+          model: string
+          name: string
+          price: number
+          rarity: string | null
+          specifications: Json | null
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          brand?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean | null
+          model: string
+          name: string
+          price: number
+          rarity?: string | null
+          specifications?: Json | null
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          brand?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean | null
+          model?: string
+          name?: string
+          price?: number
+          rarity?: string | null
+          specifications?: Json | null
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
